@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Chat Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #chat {
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+            margin-bottom: 10px;
+        }
+        #message {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat Service</h1>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Type a message..." />
+    <button id="send">Send</button>
+
+    <script>
+        const sendButton = document.getElementById('send');
+        const chatDiv = document.getElementById('chat');
+
+        // Function to fetch messages
+        function fetchMessages() {
+            fetch('/messages')
+                .then(response => response.json())
+                .then(data => {
+                    chatDiv.innerHTML = ''; // Clear chat
+                    data.forEach(msg => {
+                        chatDiv.innerHTML += `<div>${msg}</div>`;
+                    });
+                });
+        }
+
+        // Fetch messages every second
+        setInterval(fetchMessages, 1000);
+
+        // Send message when button is clicked
+        sendButton.addEventListener('click', () => {
+            const messageInput = document.getElementById('message');
+            const message = messageInput.value;
+
+            fetch('/send', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message })
+            }).then(() => {
+                messageInput.value = ''; // Clear input after sending
+            });
+        });
+    </script>
+</body>
+</html>
