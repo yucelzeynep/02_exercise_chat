@@ -162,6 +162,4 @@ Create a new directory for your project:, set up a virtual environment and insta
 
 5. **After deployment, access your chat service via the URL provided by Render.**
 
-### Conclusion
-
-You have successfully built and deployed a simple chat service using Flask and JavaScript! This application allows users to send and receive messages in real-time. You can further enhance this application by adding user authentication, message timestamps, or even persistent message storage using a database.
+Try sharing your link with others and see that you can send and receive.
