@@ -136,6 +136,7 @@ Create a new directory for your project:, set up a virtual environment and insta
    ```bash
    pip freeze > requirements.txt
    ```
+   If all these dependencies create problems while building, you can try to manually simplfy the file.
 
 2. **Create a `render.yaml` file to configure your deployment:**
    ```yaml
