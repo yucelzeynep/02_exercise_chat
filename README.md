@@ -13,22 +13,7 @@ In this exercise, you will create a simple chat service using Python with Flask 
 
 #### Step 1: Set up the Flask Environment
 
-1. **Create a new directory for your project:**
-   ```bash
-   mkdir chat_service
-   cd chat_service
-   ```
-
-2. **Set up a virtual environment:**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows use: venv\Scripts\activate
-   ```
-
-3. **Install Flask:**
-   ```bash
-   pip install Flask
-   ```
+Create a new directory for your project:, set up a virtual environment and install Flask, if necessary.
 
 #### Step 2: Create the Flask Application
 
