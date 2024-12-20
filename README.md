@@ -103,6 +103,7 @@ Create a new directory for your project. If necessary, set up a virtual environm
             }
 
             // Set an interval to fetch messages every second (1000 milliseconds)
+            // This allows the chat application to continuously check for new messages without requiring the user to refresh the page.
             setInterval(fetchMessages, 1000);
 
             // Event listener for the send button click event
