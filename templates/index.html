@@ -1,63 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Character encoding and viewport setting -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Simple Chat Service</title>
     <style>
+        /* Basic styling for the body element, 
+        chat display area and message inout field */
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, sans-serif; 
         }
         #chat {
-            border: 1px solid #ccc;
-            padding: 10px;
-            height: 300px;
-            overflow-y: scroll;
-            margin-bottom: 10px;
+            border: 1px solid #ccc; 
+            padding: 10px; 
+            height: 300px; 
+            overflow-y: scroll; /* Enable vertical scrolling for overflow text */
+            margin-bottom: 10px; 
         }
         #message {
-            width: 80%;
+            width: 80%; /* Input field takes 80% of the width */
         }
     </style>
 </head>
 <body>
     <h1>Chat Service</h1>
+    <!-- Div element to display chat messages -->
     <div id="chat"></div>
+    <!-- Input field for users to type messages -->
     <input type="text" id="message" placeholder="Type a message..." />
     <button id="send">Send</button>
 
     <script>
+        // Get references to the send button and chat display area
         const sendButton = document.getElementById('send');
         const chatDiv = document.getElementById('chat');
 
-        // Function to fetch messages
+        // Function to fetch messages from the server
         function fetchMessages() {
+            // Make a GET request to the '/messages' endpoint
             fetch('/messages')
-                .then(response => response.json())
+                .then(response => response.json()) // Parse the JSON response
                 .then(data => {
-                    chatDiv.innerHTML = ''; // Clear chat
+                    chatDiv.innerHTML = ''; // Clear the chat display area
+                    // Loop through each message and display it in the chat area
                     data.forEach(msg => {
-                        chatDiv.innerHTML += `<div>${msg}</div>`;
+                        chatDiv.innerHTML += `<div>${msg}</div>`; // Create a new div for each message
                     });
                 });
         }
 
-        // Fetch messages every second
+        // Set an interval to fetch messages every second (1000 milliseconds)
         setInterval(fetchMessages, 1000);
 
-        // Send message when button is clicked
+        // Event listener for the send button click event
         sendButton.addEventListener('click', () => {
+            // Get the message input field
             const messageInput = document.getElementById('message');
-            const message = messageInput.value;
+            const message = messageInput.value; // Get the message text
 
+            // Make a POST request to send the message
             fetch('/send', {
-                method: 'POST',
+                method: 'POST', 
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json' 
                 },
+                // Send the message as a JSON object
                 body: JSON.stringify({ message })
             }).then(() => {
-                messageInput.value = ''; // Clear input after sending
+                messageInput.value = ''; // Clear the input field after sending
             });
         });
     </script>
