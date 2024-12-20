@@ -168,7 +168,7 @@ Create a new directory for your project. If necessary, set up a virtual environm
 3. **Push your code to GitHub**
 
 4. **Create a new web service on Render:**
-   - Connect it to your repository (similar to the previous exercise.
+   - Connect it to your repository (similar to the previous exercise).
    - Make sure it uses the `render.yaml` configuration file.
 
 5. **After deployment, access your chat service via the URL provided by Render.**
