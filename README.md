@@ -1,4 +1,4 @@
-# 03 Exercise Chat
+# 02 Exercise Chat
 ### Programming Exercise: Build a Simple Chat Service Using Flask
 
 In this exercise, you will create a simple chat service using Python with Flask as the backend and basic HTML/CSS/JavaScript for the frontend. The chat service will allow users to send messages, which will be stored in memory for the session.
