@@ -1,53 +1,39 @@
-# 02 Exercise Chat
-### Programming Exercise: Build a Simple Chat Service Using Flask
+### Programming Exercise: Build a simple chat service 
 
+#### Exercise Definition
 In this exercise, you will create a simple chat service using Python with Flask as the backend and basic HTML/CSS/JavaScript for the frontend. The chat service will allow users to send messages, which will be stored in memory for the session.
 
-### Objectives:
-- Create a Flask application to handle chat messages.
-- Use HTML/CSS for the frontend interface.
-- Use JavaScript to send and retrieve messages via AJAX.
-- Deploy the application on Render.
+#### Step-by-Step Instructions
 
-### Step-by-Step Instructions:
+1. **Set Up Your Environment**:
+   - You should have everything ready if you have successfully completed the previous exercise.
 
-#### Step 1: Set up the Flask Environment
+2. **Create a Virtual Environment**:
+   - On the terminal, create a new directory (e.g. chat_app) for your project and navigate into it:
+     ```bash
+     mkdir chat_app
+     cd chat_app
+     ```
+   - Set up a virtual environment to manage your project dependencies:
+     ```bash
+     python -m venv venv_chat
+     source venv_chat/bin/activate  
 
-Create a new directory for your project. If necessary, set up a virtual environment and install Flask.
+3. **Install Flask**:
+   - In the same directory, install Flask using pip:
+     ```bash
+     pip install Flask
+     ```
 
-#### Step 2: Create the Flask Application
+4. **Create the HTML Template**:
+   - Create a folder named `templates`.
+     ```bash
+     mkdir templates
+     ```
 
-1. **Create a file named `app.py`:**
-   ```python
-   from flask import Flask, render_template, request, jsonify
+   - In your development environment, navigate into the directory '/chat_app/templates' and open new file.
+   - Add the following code and save it as `index.html`.
 
-   app = Flask(__name__)
-
-   # This will hold our messages
-   messages = []
-
-   @app.route('/')
-   def index():
-       return render_template('index.html')
-
-   @app.route('/send', methods=['POST'])
-   def send_message():
-       # Get the message from the request
-       message = request.json['message']
-       # Store the message in the list
-       messages.append(message)
-       return jsonify(success=True)
-
-   @app.route('/messages', methods=['GET'])
-   def get_messages():
-       # Return the list of messages as JSON
-       return jsonify(messages)
-
-   if __name__ == '__main__':
-       app.run(debug=True)
-   ```
-
-2. **Create a folder named `templates` and add a file named `index.html`:**
    ```html
    <!DOCTYPE html>
     <html lang="en">
@@ -129,29 +115,58 @@ Create a new directory for your project. If necessary, set up a virtual environm
     </html>
    ```
 
-#### Step 3: Run the Flask Application Locally
+5. **Create the Flask Application**:
+   - In your development environment, navigate into the directory '/chat_app' and open new file.
+   - Add the following code and save it as `app.py`. 
 
-1. **Run the application:**
-   ```bash
-   python app.py
+   ```python
+   from flask import Flask, render_template, request, jsonify
+
+   app = Flask(__name__)
+
+   # This will hold our messages
+   messages = []
+
+   @app.route('/')
+   def index():
+       return render_template('index.html')
+
+   @app.route('/send', methods=['POST'])
+   def send_message():
+       # Get the message from the request
+       message = request.json['message']
+       # Store the message in the list
+       messages.append(message)
+       return jsonify(success=True)
+
+   @app.route('/messages', methods=['GET'])
+   def get_messages():
+       # Return the list of messages as JSON
+       return jsonify(messages)
+
+   if __name__ == '__main__':
+       app.run(debug=True)
    ```
 
-2. **Open your browser and go to:**
-   ```
-   http://127.0.0.1:5000/
-   ```
+6. **Run the Application Locally**:
+   - In the terminal, navigate into the directory '/chat_app'.
+   - Start the Flask application by running the following command:
+     ```bash
+     python app.py
+     ```
+   - You will see some debug messages on the terminal (e.g. Running on http://127.0.0.1:5000)
+   - Open your browser and go to `http://127.0.0.1:5000/`. You should see the chat app. Try it.
 
-3. **You should see the chat interface. Try sending messages!**
 
-#### Step 4: Deploy to Render
-
-1. **Create a `requirements.txt` file for your dependencies:**
-   ```bash
-   pip freeze > requirements.txt
-   ```
+7. **Prepare for deployment on Render**:
+   - In the terminal, make sure you are under the directory '/greeting_app'.
+   - Create a `requirements.txt` file to specify your project dependencies:
+     ```bash
+     pip freeze > requirements.txt
+     ```
    If all these dependencies create problems while building, you can try to manually simplfy the file.
 
-2. **Create a `render.yaml` file to configure your deployment:**
+   - In your IDE, create a `render.yaml` file and add the following content (Render configurations):
    ```yaml
    version: 1
    services:
@@ -166,12 +181,30 @@ Create a new directory for your project. If necessary, set up a virtual environm
            value: development
    ```
 
-3. **Push your code to GitHub**
+8. **Create a Repository on GitHub and Commit**:
+   - Go to your project folder, initialize a repository and commit
+     ```bash
+     git init
+     git add .
+     git commit -m "Initial commit"
+     ```
+   - Push your files
+     ```bash
+     git remote add origin https://github.com/yourusername/your-repo.git
+     git push -u origin master
+     ```
+You can also get the URL to your repository by clicking on "<> Code" at the top of your repository page.
 
-4. **Create a new web service on Render:**
-   - Connect it to your repository (similar to the previous exercise).
-   - Make sure it uses the `render.yaml` configuration file.
+9. **Deploy on Render**:
+   - Go to [Render.com](https://render.com/) and create an account, if you do not have one.
+   - Once logged in, click on "Projects" on the left pane and then "Deploy a Web Service"  under "Overview". 
+   - Connect it to your GitHub account.
+   - Click on "Public Git Repository" tab and enter the URL to your repository. 
+   - On the next page, enter "python app.py" as start command and choose free plan.
+   - Click on "Deploy Web Application" at the bottom (it will take some time...) 
+   - Render will automatically detect the `render.yaml` file and set up your application.
+   - After deployment, you will be provided with a live URL for your application around the upper part of the browser window. Try sharing your link with others and see that you can send and receive.
 
-5. **After deployment, access your chat service via the URL provided by Render.**
+10. **Delete your project**:
+   - Click on render icon on the upper left, find your deployment under the list, click on "..." on the right, choose "Settings" and click on "Delete Web Service" at the bottom. 
 
-Try sharing your link with others and see that you can send and receive.
