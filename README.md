@@ -161,12 +161,12 @@ In this exercise, you will create a simple chat service using Python with Flask 
 
 
 7. **Prepare for deployment on Render**:
-   - In the terminal, make sure you are under the directory '/greeting_app'.
+   - In the terminal, make sure you are under the directory '/chat_app'.
    - Create a `requirements.txt` file to specify your project dependencies:
      ```bash
      pip freeze > requirements.txt
      ```
-   If all these dependencies create problems while building, you can try to manually simplfy the file.
+   If all these dependencies create problems while building, you can try to manually simpilfy the file.
 
    - In your IDE, create a `render.yaml` file and add the following content (Render configurations):
    ```yaml
@@ -198,9 +198,8 @@ In this exercise, you will create a simple chat service using Python with Flask 
 You can also get the URL to your repository by clicking on "<> Code" at the top of your repository page.
 
 9. **Deploy on Render**:
-   - Go to [Render.com](https://render.com/) and create an account, if you do not have one.
-   - Once logged in, click on "Projects" on the left pane and then "Deploy a Web Service"  under "Overview". 
-   - Connect it to your GitHub account.
+   - Go to [Render.com](https://render.com/) and login.
+   - Click on "Projects" on the left pane and then "Deploy a Web Service"  under "Overview". 
    - Click on "Public Git Repository" tab and enter the URL to your repository. 
    - On the next page, enter "python app.py" as start command and choose free plan.
    - Click on "Deploy Web Application" at the bottom (it will take some time...) 
