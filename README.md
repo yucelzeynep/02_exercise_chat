@@ -6,7 +6,7 @@ In this exercise, you will create a simple chat service using Python with Flask 
 #### Step-by-Step Instructions
 
 1. **Set Up Your Environment**:
-   - You should have everything ready if you have successfully completed the previous exercise.
+   - You should have everything ready, if you have successfully completed the previous exercise.
 
 2. **Create a Virtual Environment**:
    - On the terminal, create a new directory (e.g. chat_app) for your project and navigate into it:
@@ -20,7 +20,7 @@ In this exercise, you will create a simple chat service using Python with Flask 
      source venv_chat/bin/activate  
 
 3. **Install Flask**:
-   - In the same directory, install Flask using pip:
+   - In the same directory, install Flask using pip. Remember that we are in a new virtual environment:
      ```bash
      pip install Flask
      ```
@@ -45,10 +45,11 @@ In this exercise, you will create a simple chat service using Python with Flask 
         <title>Simple Chat Service</title>
         <style>
             /* Basic styling for the body element, 
-            chat display area and message inout field */
+            chat display area and message input field */
             body {
                 font-family: Arial, sans-serif; 
             }
+	    /* Here we are styling the document element with id 'chat'. The hashtag is the id selector.
             #chat {
                 border: 1px solid #ccc; 
                 padding: 10px; 
@@ -56,8 +57,9 @@ In this exercise, you will create a simple chat service using Python with Flask 
                 overflow-y: scroll; /* Enable vertical scrolling for overflow text */
                 margin-bottom: 10px; 
             }
+	    /* Similar to the above, we are styling the document element with id 'message'. 
             #message {
-                width: 80%; /* Input field takes 80% of the width */
+                width: 80%; 
             }
         </style>
     </head>

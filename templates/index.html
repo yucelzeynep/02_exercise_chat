@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Character encoding and viewport setting -->
     <meta charset="UTF-8">
@@ -10,20 +11,25 @@
         /* Basic styling for the body element, 
         chat display area and message inout field */
         body {
-            font-family: Arial, sans-serif; 
+            font-family: Arial, sans-serif;
         }
+
         #chat {
-            border: 1px solid #ccc; 
-            padding: 10px; 
-            height: 300px; 
-            overflow-y: scroll; /* Enable vertical scrolling for overflow text */
-            margin-bottom: 10px; 
+            border: 1px solid #ccc;
+            padding: 10px;
+            height: 300px;
+            overflow-y: scroll;
+            /* Enable vertical scrolling for overflow text */
+            margin-bottom: 10px;
         }
+
         #message {
-            width: 80%; /* Input field takes 80% of the width */
+            width: 80%;
+            /* Input field takes 80% of the width */
         }
     </style>
 </head>
+
 <body>
     <h1>Chat Service</h1>
     <!-- Div element to display chat messages -->
@@ -50,6 +56,20 @@
                     });
                 });
         }
+        /*
+        In the above function fetchMessages, you see example use cases for the
+        then method and arrow function of JS.
+
+        The then method is used with Promises in JS. When you make an 
+        asynchronous operation, like fetching data from a server, it returns 
+        a Promise. The then method allows you to specify what should happen 
+        once the Promise is resolved (i.e. when the operation completes 
+        successfully).
+
+        An arrow (=>) function is a shorter way to write functions in JS. 
+        Instead of using the function keyword, you use =>. 
+        */
+
 
         // Set an interval to fetch messages every second (1000 milliseconds)
         setInterval(fetchMessages, 1000);
@@ -57,14 +77,14 @@
         // Event listener for the send button click event
         sendButton.addEventListener('click', () => {
             // Get the message input field
-            const messageInput = document.getElementById('message');
+            const messageInput = document.getElementById('message'); // Get the DOM element
             const message = messageInput.value; // Get the message text
 
             // Make a POST request to send the message
             fetch('/send', {
-                method: 'POST', 
+                method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json' 
+                    'Content-Type': 'application/json'
                 },
                 // Send the message as a JSON object
                 body: JSON.stringify({ message })
@@ -74,4 +94,5 @@
         });
     </script>
 </body>
+
 </html>
